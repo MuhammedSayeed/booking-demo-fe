@@ -10,25 +10,7 @@ import { useTranslations } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-// import {
-//   TapCard,
-//   Currencies,
-//   Direction,
-//   Edges,
-//   Locale,
-//   Theme,
-//   tokenize,
-// } from "@tap-payments/card-sdk";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import "react-credit-cards/es/styles-compiled.css";
+import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import BASEURL from "@/context/handleAPIDomain";
