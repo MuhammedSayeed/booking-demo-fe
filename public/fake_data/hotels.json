@@ -1,0 +1,422 @@
+{
+    "count": 6,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "name": "Maysan Rehab Al Mysk Hotel",
+            "category": "5 STARS",
+            "description": "Located within 4.8 km of Qiblatain Mosque and 5.8 km of Quba Mosque, Maysan Rehab Al Mysk Hotel provides rooms with air conditioning and a private bathroom in Al Madinah. The property is situated 8.4 km from Mount Uhud, 8.6 km from Al Hukeer Lowna Park and 8.8 km from Jabal Ahad Garden Park. The property is 100 metres from Al-Masjid an-Nabawi, and within 600 metres of the city centre.\r\n\r\nThe rooms in the hotel are fitted with a flat-screen TV. All units at Maysan Rehab Al Mysk Hotel are equipped with a private bathroom equipped with a bidet.\r\n\r\nSpeaking both Arabic and English, staff at the reception can help you plan your stay.\r\n\r\nPrince Mohammed Al Saud Stadium is 9.1 km from the accommodation, while Taibah University is 10 km away. Prince Mohammad bin Abdulaziz International Airport is 15 km from the property.",
+            "address": "Anas bin Malik Street, Al-Naqa, Medina, Al Madinah Al Munawwarah, Medina Province, 42311, Saudi Arabia –",
+            "city": {
+                "id": 2,
+                "name": "Al-Madinah Al-Munawwarah",
+                "country": {
+                    "id": 1,
+                    "name": "Saudi Arabia",
+                    "code": "SA",
+                    "phone_code": "+966",
+                    "is_active": true,
+                    "created_at": "2025-05-14T15:50:40.920595Z",
+                    "updated_at": "2025-05-14T15:50:40.920595Z"
+                },
+                "state_province": "Al-Madinah Region",
+                "latitude": "24.524700",
+                "longitude": null,
+                "is_active": true,
+                "timezone": "UTC+3",
+                "created_at": "2025-05-14T15:55:23.371325Z",
+                "updated_at": "2025-05-14T15:55:23.371325Z"
+            },
+            "country": {
+                "id": 1,
+                "name": "Saudi Arabia",
+                "code": "SA",
+                "phone_code": "+966",
+                "is_active": true,
+                "created_at": "2025-05-14T15:50:40.920595Z",
+                "updated_at": "2025-05-14T15:50:40.920595Z"
+            },
+            "timezone": "UTC+3",
+            "postal_code": "",
+            "phone": "+966 53 360 8771",
+            "email": "info@maysangroup.com",
+            "website": "",
+            "check_in_time": "15:00:00",
+            "check_out_time": "11:00:00",
+            "is_active": true,
+            "external_system_id": null,
+            "images": [
+                {
+                    "id": 1,
+                    "image": "https://bookingengine.onrender.com/media/hotel_images/WhatsApp-Image-2024-12-21-at-11.00.59-AM.jpeg",
+                    "caption": "",
+                    "image_type": "exterior",
+                    "is_primary": false,
+                    "order": 0,
+                    "created_at": "2025-05-14T16:05:14.422922Z",
+                    "updated_at": "2025-05-14T16:05:14.422922Z",
+                    "hotel": 1
+                },
+                {
+                    "id": 2,
+                    "image": "https://bookingengine.onrender.com/media/hotel_images/WhatsApp-Image-2024-12-21-at-11.00.41-AM-1.jpeg",
+                    "caption": "",
+                    "image_type": "room",
+                    "is_primary": false,
+                    "order": 0,
+                    "created_at": "2025-05-14T16:05:14.481324Z",
+                    "updated_at": "2025-05-14T16:05:14.481324Z",
+                    "hotel": 1
+                },
+                {
+                    "id": 3,
+                    "image": "https://bookingengine.onrender.com/media/hotel_images/WhatsApp-Image-2024-12-21-at-11.00.33-AM.jpeg",
+                    "caption": "",
+                    "image_type": "lobby",
+                    "is_primary": false,
+                    "order": 0,
+                    "created_at": "2025-05-14T16:05:14.534324Z",
+                    "updated_at": "2025-05-14T16:05:14.534324Z",
+                    "hotel": 1
+                }
+            ],
+            "amenities": [
+                {
+                    "id": 1,
+                    "hotel": 1,
+                    "amenity": {
+                        "id": 1,
+                        "name": "24-hour security",
+                        "description": "",
+                        "icon": "<i class=\"fa-solid fa-user-hoodie\"></i>",
+                        "created_at": "2025-05-14T16:08:44.629694Z",
+                        "updated_at": "2025-05-14T16:08:44.629694Z"
+                    },
+                    "is_available": true,
+                    "notes": "",
+                    "created_at": "2025-05-14T16:11:10.486190Z",
+                    "updated_at": "2025-05-14T16:11:10.486190Z"
+                },
+                {
+                    "id": 2,
+                    "hotel": 1,
+                    "amenity": {
+                        "id": 3,
+                        "name": "Free WiFi",
+                        "description": "",
+                        "icon": "<i class=\"fa-solid fa-wifi\"></i>",
+                        "created_at": "2025-05-14T16:10:10.340916Z",
+                        "updated_at": "2025-05-14T16:10:10.340916Z"
+                    },
+                    "is_available": true,
+                    "notes": "",
+                    "created_at": "2025-05-14T16:11:10.537474Z",
+                    "updated_at": "2025-05-14T16:11:10.537474Z"
+                },
+                {
+                    "id": 3,
+                    "hotel": 1,
+                    "amenity": {
+                        "id": 2,
+                        "name": "Air conditioning",
+                        "description": "",
+                        "icon": "<i class=\"fa-solid fa-air-conditioner\"></i>",
+                        "created_at": "2025-05-14T16:09:39.638801Z",
+                        "updated_at": "2025-05-14T16:10:31.562966Z"
+                    },
+                    "is_available": true,
+                    "notes": "",
+                    "created_at": "2025-05-14T16:11:10.590179Z",
+                    "updated_at": "2025-05-14T16:11:10.590179Z"
+                }
+            ],
+            "created_at": "2025-05-14T16:05:14.363654Z",
+            "updated_at": "2025-05-18T12:25:34.223008Z"
+        },
+        {
+            "id": 2,
+            "name": "Grand Plaza Al Madinah",
+            "category": "3 STARS",
+            "description": "",
+            "address": "FJ87+42, Abu Ayyub Al-Ansari, Bada'ah, Madinah 42311, Saudi Arabia",
+            "city": {
+                "id": 2,
+                "name": "Al-Madinah Al-Munawwarah",
+                "country": {
+                    "id": 1,
+                    "name": "Saudi Arabia",
+                    "code": "SA",
+                    "phone_code": "+966",
+                    "is_active": true,
+                    "created_at": "2025-05-14T15:50:40.920595Z",
+                    "updated_at": "2025-05-14T15:50:40.920595Z"
+                },
+                "state_province": "Al-Madinah Region",
+                "latitude": "24.524700",
+                "longitude": null,
+                "is_active": true,
+                "timezone": "UTC+3",
+                "created_at": "2025-05-14T15:55:23.371325Z",
+                "updated_at": "2025-05-14T15:55:23.371325Z"
+            },
+            "country": {
+                "id": 1,
+                "name": "Saudi Arabia",
+                "code": "SA",
+                "phone_code": "+966",
+                "is_active": true,
+                "created_at": "2025-05-14T15:50:40.920595Z",
+                "updated_at": "2025-05-14T15:50:40.920595Z"
+            },
+            "timezone": "UTC+3",
+            "postal_code": "42311",
+            "phone": "0533608771",
+            "email": "info@maysangroup.com",
+            "website": "",
+            "check_in_time": "15:00:00",
+            "check_out_time": "11:00:00",
+            "is_active": true,
+            "external_system_id": null,
+            "images": [],
+            "amenities": [],
+            "created_at": "2025-05-18T12:32:15.327562Z",
+            "updated_at": "2025-05-18T12:35:42.295622Z"
+        },
+        {
+            "id": 4,
+            "name": "PixelHotel",
+            "category": "5 STARS",
+            "description": "Pixel hotel",
+            "address": "6 october",
+            "city": {
+                "id": 3,
+                "name": "Giza",
+                "country": {
+                    "id": 2,
+                    "name": "Egypt",
+                    "code": "EG",
+                    "phone_code": "+20",
+                    "is_active": true,
+                    "created_at": "2025-05-22T12:18:38.456743Z",
+                    "updated_at": "2025-05-22T12:18:38.456743Z"
+                },
+                "state_province": "Cairo",
+                "latitude": "123.000000",
+                "longitude": "123.000000",
+                "is_active": true,
+                "timezone": "+3",
+                "created_at": "2025-05-22T12:19:39.393674Z",
+                "updated_at": "2025-05-22T12:19:39.393674Z"
+            },
+            "country": {
+                "id": 2,
+                "name": "Egypt",
+                "code": "EG",
+                "phone_code": "+20",
+                "is_active": true,
+                "created_at": "2025-05-22T12:18:38.456743Z",
+                "updated_at": "2025-05-22T12:18:38.456743Z"
+            },
+            "timezone": "+3",
+            "postal_code": "02",
+            "phone": "01069764860",
+            "email": "ahmedhossam1294@gmail.com",
+            "website": "http://www.pixelsoft.com",
+            "check_in_time": "15:00:00",
+            "check_out_time": "11:00:00",
+            "is_active": true,
+            "external_system_id": null,
+            "images": [
+                {
+                    "id": 5,
+                    "image": "https://bookingengine.onrender.com/media/hotel_images/WhatsApp-Image-2024-12-21-at-11_IkZ2hcO.00.59-AM.jpeg",
+                    "caption": "",
+                    "image_type": "exterior",
+                    "is_primary": false,
+                    "order": 0,
+                    "created_at": "2025-05-22T13:41:23.564440Z",
+                    "updated_at": "2025-05-22T13:41:23.564440Z",
+                    "hotel": 4
+                }
+            ],
+            "amenities": [
+                {
+                    "id": 5,
+                    "hotel": 4,
+                    "amenity": {
+                        "id": 1,
+                        "name": "24-hour security",
+                        "description": "",
+                        "icon": "<i class=\"fa-solid fa-user-hoodie\"></i>",
+                        "created_at": "2025-05-14T16:08:44.629694Z",
+                        "updated_at": "2025-05-14T16:08:44.629694Z"
+                    },
+                    "is_available": true,
+                    "notes": "",
+                    "created_at": "2025-05-22T13:41:23.621101Z",
+                    "updated_at": "2025-05-22T13:41:23.621101Z"
+                }
+            ],
+            "created_at": "2025-05-22T13:41:23.479551Z",
+            "updated_at": "2025-05-22T13:41:23.479551Z"
+        },
+        {
+            "id": 5,
+            "name": "PixelHotel",
+            "category": "5 STARS",
+            "description": "Pixel hotel",
+            "address": "6 october",
+            "city": {
+                "id": 3,
+                "name": "Giza",
+                "country": {
+                    "id": 2,
+                    "name": "Egypt",
+                    "code": "EG",
+                    "phone_code": "+20",
+                    "is_active": true,
+                    "created_at": "2025-05-22T12:18:38.456743Z",
+                    "updated_at": "2025-05-22T12:18:38.456743Z"
+                },
+                "state_province": "Cairo",
+                "latitude": "123.000000",
+                "longitude": "123.000000",
+                "is_active": true,
+                "timezone": "+3",
+                "created_at": "2025-05-22T12:19:39.393674Z",
+                "updated_at": "2025-05-22T12:19:39.393674Z"
+            },
+            "country": {
+                "id": 2,
+                "name": "Egypt",
+                "code": "EG",
+                "phone_code": "+20",
+                "is_active": true,
+                "created_at": "2025-05-22T12:18:38.456743Z",
+                "updated_at": "2025-05-22T12:18:38.456743Z"
+            },
+            "timezone": "+3",
+            "postal_code": "02",
+            "phone": "01069764860",
+            "email": "ahmedhossam1294@gmail.com",
+            "website": "http://www.pixelsoft.com",
+            "check_in_time": "15:00:00",
+            "check_out_time": "11:00:00",
+            "is_active": true,
+            "external_system_id": null,
+            "images": [
+                {
+                    "id": 5,
+                    "image": "https://bookingengine.onrender.com/media/hotel_images/WhatsApp-Image-2024-12-21-at-11_IkZ2hcO.00.59-AM.jpeg",
+                    "caption": "",
+                    "image_type": "exterior",
+                    "is_primary": false,
+                    "order": 0,
+                    "created_at": "2025-05-22T13:41:23.564440Z",
+                    "updated_at": "2025-05-22T13:41:23.564440Z",
+                    "hotel": 4
+                }
+            ],
+            "amenities": [
+                {
+                    "id": 5,
+                    "hotel": 4,
+                    "amenity": {
+                        "id": 1,
+                        "name": "24-hour security",
+                        "description": "",
+                        "icon": "<i class=\"fa-solid fa-user-hoodie\"></i>",
+                        "created_at": "2025-05-14T16:08:44.629694Z",
+                        "updated_at": "2025-05-14T16:08:44.629694Z"
+                    },
+                    "is_available": true,
+                    "notes": "",
+                    "created_at": "2025-05-22T13:41:23.621101Z",
+                    "updated_at": "2025-05-22T13:41:23.621101Z"
+                }
+            ],
+            "created_at": "2025-05-22T13:41:23.479551Z",
+            "updated_at": "2025-05-22T13:41:23.479551Z"
+        },
+        {
+            "id": 6,
+            "name": "PixelHotel",
+            "category": "5 STARS",
+            "description": "Pixel hotel",
+            "address": "6 october",
+            "city": {
+                "id": 3,
+                "name": "Giza",
+                "country": {
+                    "id": 2,
+                    "name": "Egypt",
+                    "code": "EG",
+                    "phone_code": "+20",
+                    "is_active": true,
+                    "created_at": "2025-05-22T12:18:38.456743Z",
+                    "updated_at": "2025-05-22T12:18:38.456743Z"
+                },
+                "state_province": "Cairo",
+                "latitude": "123.000000",
+                "longitude": "123.000000",
+                "is_active": true,
+                "timezone": "+3",
+                "created_at": "2025-05-22T12:19:39.393674Z",
+                "updated_at": "2025-05-22T12:19:39.393674Z"
+            },
+            "country": {
+                "id": 2,
+                "name": "Egypt",
+                "code": "EG",
+                "phone_code": "+20",
+                "is_active": true,
+                "created_at": "2025-05-22T12:18:38.456743Z",
+                "updated_at": "2025-05-22T12:18:38.456743Z"
+            },
+            "timezone": "+3",
+            "postal_code": "02",
+            "phone": "01069764860",
+            "email": "ahmedhossam1294@gmail.com",
+            "website": "http://www.pixelsoft.com",
+            "check_in_time": "15:00:00",
+            "check_out_time": "11:00:00",
+            "is_active": true,
+            "external_system_id": null,
+            "images": [
+                {
+                    "id": 5,
+                    "image": "https://bookingengine.onrender.com/media/hotel_images/WhatsApp-Image-2024-12-21-at-11_IkZ2hcO.00.59-AM.jpeg",
+                    "caption": "",
+                    "image_type": "exterior",
+                    "is_primary": false,
+                    "order": 0,
+                    "created_at": "2025-05-22T13:41:23.564440Z",
+                    "updated_at": "2025-05-22T13:41:23.564440Z",
+                    "hotel": 4
+                }
+            ],
+            "amenities": [
+                {
+                    "id": 5,
+                    "hotel": 4,
+                    "amenity": {
+                        "id": 1,
+                        "name": "24-hour security",
+                        "description": "",
+                        "icon": "<i class=\"fa-solid fa-user-hoodie\"></i>",
+                        "created_at": "2025-05-14T16:08:44.629694Z",
+                        "updated_at": "2025-05-14T16:08:44.629694Z"
+                    },
+                    "is_available": true,
+                    "notes": "",
+                    "created_at": "2025-05-22T13:41:23.621101Z",
+                    "updated_at": "2025-05-22T13:41:23.621101Z"
+                }
+            ],
+            "created_at": "2025-05-22T13:41:23.479551Z",
+            "updated_at": "2025-05-22T13:41:23.479551Z"
+        }
+    ]
+}
