@@ -61,28 +61,13 @@ export default function RoomCard({
           </div>
         ))}
 
-        {/* <p className="text-gray-600 dark:text-gray-300 text-sm">
-          {tMain("Nights")}: <span className="font-medium">{room.nights}</span>
-        </p> */}
-
-        {/* <p className="text-gray-600 dark:text-gray-300 text-sm">
-          {tMain("Rooms Needed")}:{" "}
-          <span className="font-medium">{room.rooms_needed}</span>
-        </p> */}
-
-        {/* <p className="text-gray-900 dark:text-white text-lg font-semibold">
-          {tMain("Price per Night")}: $
-          {parseFloat(room.price_per_night).toFixed(2)}
-        </p> */}
+        
 
         <p className="text-gray-900 dark:text-white text-lg font-semibold">
           {tMain("Total Price")}: SAR {parseFloat(room.total_cost).toFixed(2)}
         </p>
 
-        {/* زرار الحجز */}
-        {/* <button className="mt-2 px-4 py-2 bg-primary hover:bg-[#C8A951] text-white font-semibold rounded-md transition duration-200">
-      {bookTranslation}
-    </button> */}
+     
       </div>
     </div>
   );

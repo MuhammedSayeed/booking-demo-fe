@@ -1,4 +1,7 @@
 {
+    "avaliable_hotel_for" : "Available Hotels",
+    "prev": "Previous",
+    "next": "Next",
     "HomePage": {
         "hero": {
             "title1": "Top Hotels Near the Holy Mosques",
