@@ -1,6 +1,5 @@
-// store/slices/reservationSlice.ts
 
-import { ReservationState, RoomConfiguration } from "@/interfaces/hotel";
+import { ReservationState } from "@/interfaces/hotel";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: ReservationState = {

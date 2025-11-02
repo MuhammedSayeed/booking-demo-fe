@@ -9,7 +9,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
-import { CityAutocomplete } from "./city-auto-complete";
+import { CitySelect } from "./city-selection-input";
+import { useBookingStore } from "@/store/use-reverstation-store";
 
 interface HotelSearchFormProps {
     initialValues?: {
@@ -51,7 +52,7 @@ const SearchFormSlider = ({ initialValues, hideHeading = false }: HotelSearchFor
     const [numAdults, setNumAdults] = useState(initialValues?.num_adults || "");
     const [numChildren, setNumChildren] = useState(initialValues?.num_children || "");
     const [errors, setErrors] = useState<Record<string, string>>({});
-
+    const { setFromDate: setFromDateStore, setToDate: setToDateStore, setGuests } = useBookingStore();
 
     const validateForm = () => {
         const newErrors: Record<string, string> = {}
@@ -89,12 +90,17 @@ const SearchFormSlider = ({ initialValues, hideHeading = false }: HotelSearchFor
         })
     }
 
+    const setReservaitionCriteria = () => {
+        setFromDateStore(format(fromDate!, "dd/MM/yyyy"));
+        setToDateStore(format(toDate!, "dd/MM/yyyy"));
+        setGuests(Number.parseInt(numAdults), Number.parseInt(numChildren));
+    }
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!validateForm()) return;
-
+        setReservaitionCriteria();
         const params = buildSearchParams();
-
         router.push(`/hotels?${params.toString()}`)
     }
 
@@ -116,7 +122,7 @@ const SearchFormSlider = ({ initialValues, hideHeading = false }: HotelSearchFor
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl max-w-6xl mx-auto space-y-6">
                 {/* city input */}
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-                    <CityAutocomplete value={city} onChange={setCity} error={errors.city} />
+                    <CitySelect value={city} onChange={setCity} error={errors.city} />
                     {/* Check-in Date */}
                     <div className="space-y-2">
                         <Label>

@@ -44,12 +44,6 @@ export default function RoomsList({
 
   const handleReservation = (room: RoomCombinationsResponse) => {
     dispatch(setSelectedRoom(room));
-    // {
-    //   room_type_id: room.room_type.id,
-    //   room_view_id: room.room_view.id,
-    //   meal_plan_id: roomSelection.selectedMealPlan?.id ?? "", // Use the meal plan ID from the reservation state
-    //   num_rooms: 1,
-    // },
     let roomConfigurations: RoomConfiguration[] = [];
     for (let i = 0; i < room.rooms.length; i++) {
       roomConfigurations.push({

@@ -115,27 +115,13 @@ function BookingDetails() {
     const guests = formData.get("guests") as string;
     const num_childrens = formData.get("children") as string;
     const num_rooms = formData.get("num_rooms") as string;
-    // // console.log({
-    //   specialRequests,
-    //   date,
-    //   guests,
-    //   num_childrens,
-    //   num_rooms,
-    // });
+   
 
     // validations
     if (!selectedRoom) {
       toast({
         title: tMain("select a room"),
         description: tMain("Please select a room before booking"),
-        variant: "destructive",
-      });
-      return;
-    }
-    if (!selectedMeal) {
-      toast({
-        title: tMain("select a meal plan"),
-        description: tMain("Please select a meal plan before booking"),
         variant: "destructive",
       });
       return;
@@ -149,35 +135,6 @@ function BookingDetails() {
       return;
     }
 
-    // const cloneReservationUpdateNumRooms = {
-    //   ...reservation,
-    //   room_configurations: [
-    //     ...reservation.room_configurations,
-    //     {
-    //       room_type_id: selectedRoom.id,
-    //       room_view_id: selectedRoom.room_view.id,
-    //       meal_plan_id: selectedMeal.id, // Set the selected meal plan ID
-    //       num_rooms: +num_rooms,
-    //     },
-    //   ],
-    // };
-    // const cloneReservationUpdateNumRooms = {
-    //   ...reservation,
-    //   room_configurations: reservation.room_configurations.map((roomConfig) => {
-    //     return {
-    //       room_type_id: roomConfig.room_type_id,
-    //       room_view_id: roomConfig.room_view_id,
-    //       meal_plan_id: roomConfig.meal_plan_id, // Set the selected meal plan ID
-    //       num_rooms:
-    //         param.id == reservation.hotel_id.toString() &&
-    //         roomConfig.room_type_id == selectedRoom?.room_type.id &&
-    //         roomConfig.room_view_id == selectedRoom?.room_view.id &&
-    //         roomConfig.meal_plan_id == selectedMeal?.meal_plan.id
-    //           ? +num_rooms
-    //           : roomConfig.num_rooms,
-    //     };
-    //   }),
-    // };
     dispatch(
       setReservation({
         ...reservation,
@@ -189,11 +146,7 @@ function BookingDetails() {
         to_date: date.to ? format(date.to, "yyyy-MM-dd") : "",
       })
     );
-
-    //   redirect to the next page (payment)
     router.push("/checkout");
-
-    // handleReservation();
   };
   return (
     <div>
@@ -313,22 +266,6 @@ function BookingDetails() {
                   </SelectContent>
                 </Select>
               </div>
-              {/* <div className="space-y-2">
-                <label className="text-sm font-medium">
-                  {tMain("Number of rooms")}
-                </label>
-                <div className="relative">
-                  <BedDouble className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-
-                  <Input
-                    defaultValue={1}
-                    name="num_rooms"
-                    type="number"
-                    placeholder={tMain("Number of rooms")}
-                    className="pl-9 dark:text-white"
-                  />
-                </div>
-              </div> */}
               <div className="flex items-end">
                 <Button className="w-full gap-2 bg-primary  text-white">
                   <Search className="h-4 w-4" />

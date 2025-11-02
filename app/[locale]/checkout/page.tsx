@@ -26,22 +26,20 @@ function CheckoutPage() {
   const router = useRouter();
   const tMain = useTranslations();
 
-  useEffect(() => {
-    // console.log(isAuth, "isAuth");
-    
-    if (!isAuth) {
-      toast({
-        title: tMain("Please login"),
-        description: tMain("You need to login to checkout"),
-        variant: "destructive",
-      });
+  // useEffect(() => {
+  //   if (!isAuth) {
+  //     toast({
+  //       title: tMain("Please login"),
+  //       description: tMain("You need to login to checkout"),
+  //       variant: "destructive",
+  //     });
 
-      router.push("/auth/login");
-    } else if (!hasInsertedReservation.current) {
-      hasInsertedReservation.current = true;
-      insertReservation();
-    }
-  }, [isAuth, router, tMain]);
+  //     router.push("/auth/login");
+  //   } else if (!hasInsertedReservation.current) {
+  //     hasInsertedReservation.current = true;
+  //     insertReservation();
+  //   }
+  // }, [isAuth, router, tMain]);
 
   const insertReservation = async () => {
     const access_token = JSON.parse(localStorage.getItem("userData") || "null")
@@ -58,7 +56,7 @@ function CheckoutPage() {
       .then((res) => {
         // console.log("Reservation response:", res.data);
         console.log('here....');
-        
+
         router.push("/auth/profile");
         // location.reload();
       })
@@ -98,9 +96,7 @@ function CheckoutPage() {
         className="container py-12 text-center"
       >
         <h2 className="text-2xl font-bold mb-4">{tMain("Loading")}...</h2>
-        {/* <p className="text-muted-foreground mb-6">
-          {tMain("Please wait while we fetch the hotel details")}.
-        </p> */}
+
       </div>
     </div>
   );

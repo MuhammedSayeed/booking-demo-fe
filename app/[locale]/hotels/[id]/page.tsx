@@ -21,27 +21,6 @@ import { useParams, useRouter } from "next/navigation";
 import { Hotel } from "@/interfaces/hotel";
 import axios from "axios";
 import { convertTo12Hour } from "@/lib/utils";
-
-import { Label } from "@/components/ui/label";
-
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
-import { format } from "date-fns";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-
 import { useTranslations } from "next-intl";
 import HandelReviewCard from "@/components/HandelReviewCard";
 import BASEURL from "@/context/handleAPIDomain";
@@ -49,7 +28,7 @@ import GetRooms from "@/components/GetRooms";
 import GetMeals from "@/components/GetMeals";
 import { useAppSelector } from "@/lib/hooks";
 import MapDisplay from "@/components/MapDisplay";
-// import MapPage from "@/components/MapPage";
+import { useBookingStore } from "@/store/use-reverstation-store";
 
 function HotelDetailPage() {
   const params = useParams();
@@ -62,6 +41,11 @@ function HotelDetailPage() {
   const { locale } = useParams();
   const tMain = useTranslations();
   const [isFavorite, setIsFavorite] = useState(false);
+
+
+  const access_token = JSON.parse(
+    localStorage.getItem("userData") || "null"
+  )?.tokens.access_token;
 
   useEffect(() => {
     let isMounted = true;
@@ -96,17 +80,7 @@ function HotelDetailPage() {
       isMounted = false;
     };
   }, [params.id, locale]);
-  const dateHand = useAppSelector((state) => state.searchDateSlice);
 
-  const [date, setDate] = useState<{
-    from: Date | undefined;
-    to: Date | undefined;
-  }>({
-    from: dateHand.from || undefined,
-    to: dateHand.to || undefined,
-  });
-
-  const [selectedGuests, setSelectedGuests] = useState<string>("1");
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -155,20 +129,20 @@ function HotelDetailPage() {
     navigator.clipboard.writeText(window.location.href);
   };
 
+
+  const { setHotelId } = useBookingStore();
+
   const handleBookNow = () => {
-    if (!date.from || !date.to) {
+    if (!access_token) {
       toast({
-        title: "Please select dates",
-        description:
-          "You need to select check-in and check-out dates to proceed",
+        title: "Please login to book now",
         variant: "destructive",
       });
       return;
-    }
-    toast({
-      title: "Proceeding to reservation",
-      description: "You will be redirected to complete your booking",
-    });
+    };
+    if (!hotel) return;
+    setHotelId(hotel.id);
+    router.push(`/${locale}/hotels/${hotel.id}/reservations/${hotel.name}`)
   };
 
   const handleHotelError = (error: unknown) => {
@@ -251,7 +225,7 @@ function HotelDetailPage() {
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleToggleFavorite}>
             <Heart
-              className={`h-4 w-4 mr-2 ${isFavorite ? "fill-red-500 text-red-500" : ""
+              className={`h - 4 w - 4 mr - 2 ${isFavorite ? "fill-red-500 text-red-500" : ""
                 }`}
             />
             {isFavorite ? tMain("Saved") : tMain("Save")}
@@ -294,8 +268,8 @@ function HotelDetailPage() {
           {hotel.images.map((_, index) => (
             <button
               key={index}
-              className={`w-2 h-2 rounded-full ${index === currentImageIndex ? "bg-primary" : "bg-white/50"
-                }`}
+              className={`w - 2 h - 2 rounded - full ${index === currentImageIndex ? "bg-primary" : "bg-white/50"
+                } `}
               onClick={() => setCurrentImageIndex(index)}
             >
               <span className="sr-only">View image {index + 1}</span>
@@ -379,7 +353,7 @@ function HotelDetailPage() {
             <TabsContent value="reviews" className="mt-6">
               <div className="space-y-6">
                 <h2 className="text-xl font-semibold">{tMain("Reviews")}</h2>
-                <HandelReviewCard hotel_id={`${params.id}`} />
+                <HandelReviewCard hotel_id={`${params.id} `} />
               </div>
             </TabsContent>
           </Tabs>
@@ -399,7 +373,7 @@ function HotelDetailPage() {
                     {hotel.city.state_province}
                   </span>
                   <Link
-                    href={`mailto:${hotel.email}`}
+                    href={`mailto:${hotel.email} `}
                     className="text-sm font-bold !underline"
                   >
                     {hotel.email}
@@ -414,120 +388,23 @@ function HotelDetailPage() {
                 </div>
                 {window.localStorage.getItem("userData") ? (
                   <Button
-                    onClick={() => {
-                      if (
-                        date.from !== undefined &&
-                        date.to !== undefined &&
-                        selectedGuests.length > 0
-                      ) {
-                        router.push(
-                          `/${locale}/hotels/${hotel.id}/reservations/${hotel.name
-                          }?from=${format(date.from, "dd/MM/yyyy")}&to=${format(
-                            date.to,
-                            "dd/MM/yyyy"
-                          )}&guests=${selectedGuests}`
-                        );
-                      } else {
-                        toast({
-                          title: tMain("Search error"), //
-                          description: tMain(
-                            "The reservation period must be specified at least"
-                          ), //
-                          variant: "destructive",
-                        });
-                      }
-                    }}
+                    onClick={handleBookNow}
                     className="bg-primary text-white"
                   >
-                    {/* <Link
-                      href={`/${locale}/hotels/${hotel.id}/reservations/${hotel.name}`}
-                    >
-                    </Link> */}
                     {tMain("Book Now")}
                   </Button>
                 ) : (
                   <Button
                     onClick={() => {
-                      router.push(`/${locale}/auth/login`);
+                      router.push(`/ ${locale} /auth/login`);
                     }}
                     className="bg-primary text-white"
                   >
-                    {/* <Link href={`/${locale}/auth/login`}> */}
+                    {/* <Link href={`/ ${ locale } /auth/login`}> */}
                     {tMain("Book Now")}
                     {/* </Link> */}
                   </Button>
                 )}
-              </div>
-              <div className="space-y-2">
-                <Label>{tMain("Check-in / Check-out")}</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className="w-full justify-start text-left font-normal dark:text-white"
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {date?.from ? (
-                        date.to ? (
-                          <>
-                            {format(date.from, "MMM d")} -{" "}
-                            {format(date.to, "MMM d, yyyy")}
-                          </>
-                        ) : (
-                          format(date.from, "MMM d, yyyy")
-                        )
-                      ) : (
-                        <span>{tMain("Select dates")}</span>
-                      )}
-                    </Button>
-                  </PopoverTrigger>
-                  <div className="hidden">
-                    <input
-                      type="text"
-                      defaultValue={`${date.from}`}
-                      name="checkin"
-                    />
-                    <input
-                      type="text"
-                      defaultValue={`${date.to}`}
-                      name="checkout"
-                    />
-                  </div>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      initialFocus
-                      className="co"
-                      mode="range"
-                      defaultMonth={date?.from}
-                      selected={date}
-                      onSelect={(range) =>
-                        setDate({ from: range?.from, to: range?.to })
-                      }
-                      numberOfMonths={2}
-                      disabled={(date) => date < new Date()}
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="guests">{tMain("Guests")}</Label>
-                <Select
-                  onValueChange={(e) => {
-                    setSelectedGuests(e);
-                  }}
-                  name="guests"
-                >
-                  <SelectTrigger id="guests">
-                    <SelectValue placeholder={tMain("Number of guests")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">1 {tMain("Guest")}</SelectItem>
-                    <SelectItem value="2">2 {tMain("Guests")}</SelectItem>
-                    <SelectItem value="3">3 {tMain("Guests")}</SelectItem>
-                    <SelectItem value="4">4 {tMain("Guests")}</SelectItem>
-                    <SelectItem value="5">5+ {tMain("Guests")}</SelectItem>
-                  </SelectContent>
-                </Select>
               </div>
             </div>
             <Separator />
@@ -555,13 +432,13 @@ function HotelDetailPage() {
               <h2 className="text-xl font-semibold">{tMain("Contact Us")}</h2>
               <div className="grid grid-cols-1 gap-4">
                 <Link
-                  href={`mailto:${hotel.email}`}
+                  href={`mailto:${hotel.email} `}
                   className="text-sm font-bold !underline"
                 >
                   {hotel.email}
                 </Link>
                 <Link
-                  href={`tel:${hotel.phone}`}
+                  href={`tel:${hotel.phone} `}
                   className="text-sm font-bold !underline"
                 >
                   {hotel.phone}

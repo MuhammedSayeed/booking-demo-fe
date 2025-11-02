@@ -38,16 +38,16 @@ export default function HotelsPage() {
   const numChildren = searchParams.get("num_children") || ""
 
   useEffect(() => {
-    if (fromDate && toDate && numAdults && numChildren) {
+    if (city && fromDate && toDate && numAdults && numChildren) {
       fetchResults()
     }
-  }, [fromDate, toDate, numAdults, numChildren, page])
+  }, [city, fromDate, toDate, numAdults, numChildren, page])
 
   const fetchResults = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`${BASEURL}/hotels/api/v1/hotel-reservation/?from_date=${fromDate}&to_date=${toDate}&num_children=${numChildren}&num_adults=${numAdults}&lang=${locale}&page=${page}`, {
+      const res = await axios.get(`${BASEURL}/hotels/api/v1/hotel-reservation/?cit=${city}&from_date=${fromDate}&to_date=${toDate}&num_children=${numChildren}&num_adults=${numAdults}&lang=${locale}&page=${page}`, {
         headers: {
           "ngrok-skip-browser-warning": "true"
         }
