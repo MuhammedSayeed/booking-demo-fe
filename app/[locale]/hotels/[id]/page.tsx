@@ -386,25 +386,12 @@ function HotelDetailPage() {
                   </Link>
                   <span className="text-sm font-bold">{hotel.postal_code}</span>
                 </div>
-                {window.localStorage.getItem("userData") ? (
-                  <Button
-                    onClick={handleBookNow}
-                    className="bg-primary text-white"
-                  >
-                    {tMain("Book Now")}
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => {
-                      router.push(`/ ${locale} /auth/login`);
-                    }}
-                    className="bg-primary text-white"
-                  >
-                    {/* <Link href={`/ ${ locale } /auth/login`}> */}
-                    {tMain("Book Now")}
-                    {/* </Link> */}
-                  </Button>
-                )}
+                <Button
+                  onClick={handleBookNow}
+                  className="bg-primary text-white"
+                >
+                  {tMain("Book Now")}
+                </Button>
               </div>
             </div>
             <Separator />
