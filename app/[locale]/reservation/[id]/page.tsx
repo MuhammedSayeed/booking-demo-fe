@@ -262,7 +262,7 @@ const Page = () => {
                                             </li>
                                             <li>
                                                 <span className="font-medium">{t("mealPlan")}:</span>{" "}
-                                                {room.meal_plan.name}
+                                                {room?.meal_plan?.name ? room.meal_plan.name : "none"}
                                             </li>
                                             <li>
                                                 <span className="font-medium">{t("maxOccupancy")}:</span>{" "}

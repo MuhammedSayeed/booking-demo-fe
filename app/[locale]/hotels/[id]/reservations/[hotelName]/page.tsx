@@ -214,7 +214,7 @@ function Reservations() {
                         <p className="text-sm text-muted-foreground">{room.room_view.name}</p>
                       </div>
                       <div>
-                        <p className="text-lg font-bold text-green-600">${room.total_price}</p>
+                        <p className="text-lg font-bold text-green-600">SAR {room.total_price}</p>
                       </div>
                     </div>
                   </Card>
@@ -254,7 +254,7 @@ function Reservations() {
                           }
                         </div>
                         <div>
-                          <p className="text-lg font-bold text-green-600">${meal.today_price}</p>
+                          <p className="text-lg font-bold text-green-600">SAR {meal.today_price}</p>
                         </div>
                       </div>
                     </Card>

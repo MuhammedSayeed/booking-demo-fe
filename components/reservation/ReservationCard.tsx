@@ -82,7 +82,7 @@ const ReservationCard = ({ reservation }: { reservation: Booking }) => {
                 <div className="border-t pt-4 flex flex-col sm:flex-row justify-between items-center">
                     <div className="text-center sm:text-left">
                         <p className="text-sm font-medium text-gray-500">{t("totalAmount")}</p>
-                        <p className="text-2xl font-bold text-gray-900">${total_amount}</p>
+                        <p className="text-2xl font-bold text-gray-900">SAR {total_amount}</p>
                     </div>
 
 
