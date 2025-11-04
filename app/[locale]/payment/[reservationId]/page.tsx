@@ -15,17 +15,16 @@ import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import BASEURL from "@/context/handleAPIDomain";
 
-// redirect after pay `/ar/payment/:reservation_id/?status=&tap_id=`
 
 function ReservationId() {
-  const { locale, reservationId, status } = useParams();
+  const { locale, reservationId } = useParams();
   const tMain = useTranslations();
   const router = useRouter();
   const [data, setData] = useState<Booking>();
 
   const [loading, setloading] = useState(true);
   const [url, setUrl] = useState<string>(
-    `${BASEURL}/reservations/api/v1/${reservationId}/?lang=${locale}` // Adjust the URL as needed
+    `${BASEURL}/reservations/api/v1/${reservationId}/?lang=${locale}`
   );
 
   const fetchReservations = async (url: string) => {
@@ -69,7 +68,7 @@ function ReservationId() {
       .get(
         `${BASEURL}/payments/api/v1/complete/${reservationId}/?tap_id=${tap_id}&lang=${locale}`,
         {
-          headers :{
+          headers: {
             "ngrok-skip-browser-warning": "true"
           }
         }
@@ -97,8 +96,7 @@ function ReservationId() {
   };
 
   useEffect(() => {
-    // get query status
-    // const status = new URLSearchParams(window.location.search).get("status");
+
     const tap_id = new URLSearchParams(window.location.search).get("tap_id");
     fetchReservations(url);
     if (tap_id) {
@@ -109,17 +107,7 @@ function ReservationId() {
   const user = useSelector((state: RootState) => state.user);
 
   const handleSuccessFormPay = async (id: string) => {
-    // toast({
-    //   title: tMain("Payment Successful"),
-    //   description: tMain("Your payment has been processed successfully"),
-    // });
 
-    /*
-  "amount": 255,
-  "payment_token": "tok_TS64A57251623jcrg27by4x78",
-  "reservation_id": "65",
-  "payment_method": "credit_card"
-*/
     setloading(true);
     const access_token = JSON.parse(localStorage.getItem("userData") || "null")
       ?.tokens.access_token;
@@ -166,11 +154,11 @@ function ReservationId() {
           <option value="duplicate">${tMain("Duplicate")}</option>
           <option value="fraudulent">${tMain("Fraudulent")}</option>
           <option value="requested_by_customer">${tMain(
-            "Requested by Customer"
-          )}</option>
+        "Requested by Customer"
+      )}</option>
           <option value="cancelled_service">${tMain(
-            "Cancelled Service"
-          )}</option>
+        "Cancelled Service"
+      )}</option>
           <option value="other">${tMain("Other")}</option>
         </select>
       `,
@@ -210,17 +198,7 @@ function ReservationId() {
             }
           )
           .then(async (res) => {
-            /**
-             *{
-    "status": "success",
-    "refund_id": 2,
-    "tap_refund_id": "re_TS04A2820251001Ml4u2905754",
-    "amount_refunded": 690,
-    "message": "Refund processed successfully"
-} 
-             * 
-            
-             */
+
             toast({
               title: `${res.data.message}, Amount Refunded ${res.data.amount_refunded}`,
             });
@@ -246,9 +224,7 @@ function ReservationId() {
         className="container py-12 text-center"
       >
         <h2 className="text-2xl font-bold mb-4">{tMain("Loading")}...</h2>
-        {/* <p className="text-muted-foreground mb-6">
-          {tMain("Please wait while we fetch the hotel details")}.
-        </p> */}
+       
       </div>
     );
   return (
@@ -264,70 +240,9 @@ function ReservationId() {
               await handleSuccessFormPay(`${data.id}`);
             }}
           >
-            {/* <TapCard
-              publicKey={`${process.env.NEXT_PUBLIC_TAPPAY_TEST_TOKEN}`}
-              transaction={{
-                amount: Number(data?.total_amount) || 1,
-                currency: Currencies.SAR,
-              }}
-              customer={{
-                name: [
-                  {
-                    lang: Locale.EN,
-                    first: "Ahmed",
-                    last: "Sharkawy",
-                    middle: "Mohamed",
-                  },
-                ],
-                nameOnCard: "Ahmed Sharkawy",
-                editable: true,
-                contact: {
-                  email: "ahmed@gmail.com",
-                  phone: {
-                    countryCode: "20",
-                    number: "1000000000",
-                  },
-                },
-              }}
-              acceptance={{
-                supportedBrands: ["AMEX", "VISA", "MASTERCARD", "MADA"],
-                supportedCards: ["CREDIT", "DEBIT"],
-              }}
-              fields={{
-                cardHolder: true,
-              }}
-              addons={{
-                // submitButton: true,
-                // submitButtonText: "Pay Now",
-                loader: true,
-                saveCard: false,
-                displayPaymentBrands: true,
-              }}
-              interface={{
-                locale: Locale.EN,
-                theme: Theme.LIGHT,
-                edges: Edges.CURVED,
-                direction: Direction.LTR,
-              }}
-              onSuccess={(data) => {
-                // console.log("✅ onSuccess called!", data.id);
-                handleSuccessFormPay(data.id);
-              }}
-              onValidInput={() => {
-                // console.log("✅ onValidInput called!");
-                return;
-              }}
-              onReady={() => {
-                // console.log("✅ onReady called!");
-                return;
-              }}
-              onError={(error) => {
-                console.error("❌ onError:", error);
-              }}
-            /> */}
             <button
               type="submit"
-              className="bg-[#957428] hover:bg-[#9b8548] text-white px-4 py-2 rounded transition flex items-center gap-1 mx-auto text-center"
+              className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded transition flex items-center gap-1 mx-auto text-center"
             >
               {tMain("Submit Payment")}
             </button>
@@ -345,13 +260,12 @@ function ReservationId() {
             {tMain("Reservation")} #{data.reference_number}
           </h2>
           <span
-            className={`text-sm font-medium px-3 py-1  ${
-              ["cancelled", "failed"].includes(data.status)
+            className={`text-sm font-medium px-3 py-1  ${["cancelled", "failed"].includes(data.status)
                 ? "bg-[#ff00004f] text-white"
                 : ["confirmed"].includes(data.status)
-                ? "text-white bg-[#957428]"
-                : "text-gray-700 bg-gray-100"
-            }  rounded-full`}
+                  ? "text-white bg-[#957428]"
+                  : "text-gray-700 bg-gray-100"
+              }  rounded-full`}
           >
             {tMain("Status")}: {data.status}
           </span>

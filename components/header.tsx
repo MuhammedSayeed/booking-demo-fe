@@ -7,7 +7,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
@@ -38,26 +37,18 @@ import { usePreviousRoute } from "@/lib/PreviousRouteContext";
 import { useThemeData } from "@/context/theme-context";
 
 export function Header() {
-  // const [isSearchOpen, setIsSearchOpen] = useState(false)
   const { user, isLoading, logout } = useAuth();
-  // const isAuth = useSelector(isAuthenticated);
   const userInfo = useAppSelector((state) => state.user);
   const isAuth = !!userInfo.id;
-  // // console.log(isAuth);
-  // console.log(userInfo);
+
 
   const { locale } = useParams();
   const tMain = useTranslations();
-  // @ts-ignore
-  //   const userisAuthenticated = useStore((state) => state.isAuthenticated);
-  // // // console.log(userisAuthenticated);
 
   const pathName = usePathname();
   const previousRoute = usePreviousRoute();
-  // console.log("previousRoute", previousRoute);
   const [rerender, setrerender] = useState(previousRoute);
   useEffect(() => {
-    // // console.log(pathName);
   }, [pathName, isAuth, user, rerender]);
 
 
@@ -222,10 +213,7 @@ export function Header() {
                   <Loader2 className="h-8 w-8 animate-spin text-primary" />
                 ) : isAuth && user ? (
                   <Avatar className="h-10 w-10">
-                    {/* <AvatarImage
-                        src={user.avatar || "/hero/hero-5.jpg?height=32&width=32"}
-                        alt={user.last_name}
-                      /> */}
+                    
                     <AvatarFallback>{`${user.first_name.charAt(
                       0
                     )}${user.last_name.charAt(0)}`}</AvatarFallback>
@@ -241,9 +229,9 @@ export function Header() {
                   <DropdownMenuItem asChild>
                     <Link href="/auth/profile">{tMain("My Profile")}</Link>
                   </DropdownMenuItem>
-                  {/* <DropdownMenuItem asChild>
-                    <Link href="/reservations">{tMain("My Reservations")}</Link>
-                  </DropdownMenuItem> */}
+                  <DropdownMenuItem asChild>
+                    <Link href="/reservation">{tMain("myReservations")}</Link>
+                  </DropdownMenuItem>
                   <DropdownMenuItem
                     onClick={() => {
                       logout();

@@ -32,7 +32,6 @@ export const getThemeData = cache(async (): Promise<ThemeResponse> => {
         return res.data;
     } catch (error) {
         console.error('Error fetching theme:', error);
-        // إرجاع قيم افتراضية في حالة الفشل
         return {
             id: 'fallback',
             name: 'Default Theme',
