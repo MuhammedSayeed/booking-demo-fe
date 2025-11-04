@@ -352,5 +352,6 @@
     "backToHome": "Back to Home",
     "notLoggedIn": "You are not logged in.",
     "noBookingDetailsFound": "No booking details found.",
-    "fetchBookingError": "Failed to fetch booking details. Please try again."
+    "fetchBookingError": "Failed to fetch booking details. Please try again.",
+    "viewDetails" : "View Details"
 }

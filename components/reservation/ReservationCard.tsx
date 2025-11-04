@@ -6,7 +6,7 @@ import Link from "next/link";
 
 
 const ReservationCard = ({ reservation }: { reservation: Booking }) => {
-    const router = useRouter();
+   
     const t = useTranslations()
     const { id, status, hotel, check_in, check_out, adults, children, reference_number, total_amount } = reservation;
 
@@ -27,12 +27,10 @@ const ReservationCard = ({ reservation }: { reservation: Booking }) => {
     const statusStyle = (statusStyles as Record<string, string>)[status] || "bg-gray-100 text-gray-800";
 
 
-    const handleNavigate = () => {
-        router.push(`/reservation/${id}`)
-    }
+    
 
     return (
-        <div onClick={handleNavigate} className="bg-white cursor-pointer shadow-lg rounded-xl overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl flex flex-col">
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl flex flex-col">
             {/* Card Content */}
             <div className="p-6 flex flex-col justify-between flex-grow">
                 <div>
@@ -87,16 +85,21 @@ const ReservationCard = ({ reservation }: { reservation: Booking }) => {
                         <p className="text-2xl font-bold text-gray-900">${total_amount}</p>
                     </div>
 
-                    {/* Conditional Payment Button */}
-                    {status === 'pending' && (
-                        <Link
-                            href={`payment/${id}`}
-                            className="mt-4 sm:mt-0 flex items-center gap-4 justify-center bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-primary/90 transition-all duration-300 ease-in-out transform hover:-translate-y-0.5"
-                        >
-                            <CreditCard />
-                            {t("payNow")}
+
+                    <div className="flex items-center gap-4">
+                        {status === 'pending' && (
+                            <Link
+                                href={`payment/${id}`}
+                                className="mt-4 sm:mt-0 flex items-center gap-4 justify-center bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-primary/90 transition-all duration-300 ease-in-out transform hover:-translate-y-0.5"
+                            >
+                                <CreditCard />
+                                {t("payNow")}
+                            </Link>
+                        )}
+                        <Link href={`/reservation/${id}`} className="mt-4 sm:mt-0 flex items-center gap-4 justify-center bg-primary text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-primary/90 transition-all duration-300 ease-in-out transform hover:-translate-y-0.5">
+                                {t("viewDetails")}
                         </Link>
-                    )}
+                    </div>
                 </div>
             </div>
         </div>
