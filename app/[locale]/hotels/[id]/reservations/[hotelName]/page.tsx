@@ -92,7 +92,9 @@ function Reservations() {
           }
         })
         if (res.data) {
-          setRooms(res.data[0].rooms)
+          setRooms(res.data[0].rooms);
+          console.log(res.data);
+
         }
       } catch (error: any) {
 
@@ -136,6 +138,13 @@ function Reservations() {
     loadRooms();
     loadMeals();
   }, [id]);
+
+
+  useEffect(() => {
+    if (rooms.length > 0) {
+      handleSetRoom()
+    }
+  }, [rooms])
   if (loading) {
     return (
       <div
@@ -149,16 +158,18 @@ function Reservations() {
       </div>
     );
   }
-  const handleSelectRoom = ({ room_type_id, room_view_id }: { room_type_id: string, room_view_id: string }) => {
-    setRoomConfigurations([
-      {
-        meal_plan_id: "",
-        room_type_id,
-        room_view_id,
-        num_rooms: 1,
-      }
-    ])
+  const handleSetRoom = () => {
+    const roomConfigurations = rooms.map((r) => ({
+      room_type_id: r.room_type.id,
+      room_view_id: r.room_view.id,
+      meal_plan_id: "", // default empty
+      num_rooms: 1, // default 1
+    }));
+    setRoomConfigurations(roomConfigurations);
+
   }
+  console.log(room_configurations);
+  
 
   const handleSelectMeal = ({ meal_plan_id }: { meal_plan_id: string }) => {
     setRoomConfigurations(room_configurations.map((rc) => ({
@@ -197,7 +208,7 @@ function Reservations() {
   return (
     <div dir={locale === "ar" ? "rtl" : "ltr"} className="container py-8">
       {/* Rooms */}
-      <div className="p-8">
+      {/* <div className="p-8">
         <h1 className="text-2xl font-bold mb-6">{tMain("Available Rooms")}</h1>
         <div className="flex gap-8">
           {
@@ -207,7 +218,7 @@ function Reservations() {
 
               return (
                 <div key={room.room_type.id} className="w-fit hover:shadow-sm cursor-pointer">
-                  <Card onClick={() => handleSelectRoom({ room_type_id: room.room_type.id, room_view_id: room.room_view.id })} className={clsx("p-4", isActiveRoom ? "bg-neutral-100" : "")}>
+                  <Card className={clsx("p-4", isActiveRoom ? "bg-neutral-100" : "")}>
                     <div className="flex flex-wrap justify-between gap-12">
                       <div>
                         <h2 className="text-lg font-bold">{room.room_type.name}</h2>
@@ -224,7 +235,7 @@ function Reservations() {
           }
         </div>
 
-      </div>
+      </div> */}
       {/* Meals Plan */}
       <div className="p-8">
         <h1 className="text-2xl font-bold mb-6">{tMain("Meal Plan")}</h1>
