@@ -1,4 +1,3 @@
-import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import AboutClientWrapper from "@/components/client/AboutClientWrapper";
 import { Loader2 } from "lucide-react";

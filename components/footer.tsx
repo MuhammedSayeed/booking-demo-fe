@@ -59,14 +59,6 @@ export function Footer() {
                   {tMain("Contact Us")}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href={`/contact`}
-                  className="text-muted-foreground hover:text-primary"
-                >
-                  {tMain("About")}
-                </Link>
-              </li>
               {theme.email && (
                 <li>
                   <a

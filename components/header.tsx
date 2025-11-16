@@ -88,12 +88,7 @@ export function Header() {
                 >
                   {tMain("Rooms of Hotels")}
                 </Link>
-                <Link
-                  href="/about"
-                  className="flex items-center gap-2 py-2 text-sm"
-                >
-                  {tMain("About Us")}
-                </Link>
+
                 <Link
                   href="/contact"
                   className="flex items-center gap-2 py-2 text-sm"
@@ -160,13 +155,6 @@ export function Header() {
                 <Link href="/hotels" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     {tMain("Rooms of Hotels")}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {tMain("About Us")}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
